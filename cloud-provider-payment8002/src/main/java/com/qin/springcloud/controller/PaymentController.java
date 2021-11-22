@@ -7,11 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * description
@@ -29,9 +25,6 @@ public class PaymentController {
 
     @Value("${server.port}")
     private String port;
-
-    @Autowired
-    private DiscoveryClient discoveryClient;
 
     @PostMapping("/payment/create")
     public CommonResult create(@RequestBody Payment payment){
@@ -52,20 +45,5 @@ public class PaymentController {
         }else{
             return new CommonResult<>(444,"没有对应记录,port:" + port);
         }
-    }
-
-    @GetMapping("/payment/discovery")
-    public Object discovery(){
-        List<String> services = discoveryClient.getServices();
-        for(String service : services){
-            logger.info("****** service:{}", service);
-        }
-
-        List<ServiceInstance> instanceList = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
-        for(ServiceInstance instance : instanceList){
-            logger.info(instance.getServiceId() + "\t" + instance.getHost() + "\t"  + instance.getHost() + "\t" + instance.getPort() + "\t" + instance.getUri());
-        }
-
-        return discoveryClient;
     }
 }
