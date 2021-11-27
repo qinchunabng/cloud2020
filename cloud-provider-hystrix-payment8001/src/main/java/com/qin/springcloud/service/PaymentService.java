@@ -11,4 +11,6 @@ public interface PaymentService {
     String paymentInfoSuccess(Integer id);
 
     String paymentInfoTimeout(Integer id);
+
+    String paymentCircuitBreaker(Integer id);
 }

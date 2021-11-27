@@ -14,3 +14,5 @@ feign:
         connectTimeout: 5000
         # 建立连接超时时间
         readTimeout: 5000
+  hystrix:
+    enabled: true
