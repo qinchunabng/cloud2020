@@ -1,24 +1,20 @@
 server:
-  port: 3344
+  port: 3366
 spring:
   application:
-    name: cloud-config-center
+    name: config-client
   cloud:
+    #config客户端配置
     config:
-      server:
-        git:
-          uri: git@gitee.com:373413704/springcloud-config.git #git仓库名称
-          search-paths:
-            - springcloud-config  #搜索目录
-      ### 读取分支
-      label: main
+      label: main #分支名称
+      name: config #配置文件名称
+      profile: dev #读取后缀名称 上述三个综合得到配置文件/main/config-dev.yml
+      uri: http://localhost:3344 #配置中心地址
   rabbitmq:
     addresses: myrabbitmq.com
     port: 5672
     username: guest
     password: guest
-
-#rabbitmq的相关配置
 
 eureka:
   client:
@@ -26,8 +22,9 @@ eureka:
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
 
+#暴漏监控端点
 management:
   endpoints:
     web:
       exposure:
-        include: 'bus-refresh'
+        include: '*'
