@@ -29,4 +29,9 @@ public class OrderFeignController {
     public String paymentFeignTimeout(){
         return paymentFeignService.paymentFeignTimeout();
     }
+
+    @GetMapping("/consumer/payment/zipkin")
+    public String paymentZipkin(){
+        return paymentFeignService.paymentZipkin();
+    }
 }
