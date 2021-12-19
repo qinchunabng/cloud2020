@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qin.springcloud.alibaba.dao.PaymentDao">
+
+    <resultMap id="PaymentResultMap" type="com.qin.springcloud.entities.Payment">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="serial" property="serial" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="create" parameterType="com.qin.springcloud.entities.Payment" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        INSERT INTO payment(serial) value(#{serial})
+    </insert>
+
+    <select id="getById" parameterType="long" resultMap="PaymentResultMap">
+        SELECT id,serial FROM payment WHERE id=#{id}
+    </select>
+</mapper>

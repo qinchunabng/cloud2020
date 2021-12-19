@@ -8,3 +8,22 @@ spring:
     nacos:
       discovery:
         server-addr: localhost:8848
+    sentinel:
+      transport:
+        # sentinel dashboard地址
+        dashboard: localhost:8080
+        # 默认8719端口，如果端口被占用以后向后扫描直到找到为占用的端口
+        port: 8719
+      datasource:
+        ds1:
+          nacos:
+            server-addr: localhost:8848
+            dataId: ${spring.application.name}
+            groupId: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow
+
+
+feign:
+  sentinel:
+    enabled: true

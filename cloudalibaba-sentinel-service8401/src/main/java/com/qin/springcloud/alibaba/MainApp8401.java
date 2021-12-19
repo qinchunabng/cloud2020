@@ -3,20 +3,18 @@ package com.qin.springcloud.alibaba;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * description
  *
  * @author DELL
- * @date 2021/12/10 22:17.
+ * @date 2021/12/17 23:50.
  */
-@SpringBootApplication
 @EnableDiscoveryClient
-@EnableFeignClients
-public class OrderNacosMain83 {
+@SpringBootApplication
+public class MainApp8401 {
 
     public static void main(String[] args) {
-        SpringApplication.run(OrderNacosMain83.class, args);
+        SpringApplication.run(MainApp8401.class, args);
     }
 }

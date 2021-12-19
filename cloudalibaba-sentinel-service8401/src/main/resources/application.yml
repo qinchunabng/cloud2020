@@ -1,12 +1,13 @@
 server:
-  port: 9001
+  port: 8401
 
 spring:
   application:
-    name: nacos-payment-provider
+    name: cloudalibaba-sentinel-service
   cloud:
     nacos:
       discovery:
+        # nacos服务注册中心地址
         server-addr: localhost:8848
     sentinel:
       transport:
@@ -18,22 +19,10 @@ spring:
         ds1:
           nacos:
             server-addr: localhost:8848
-            dataId: ${spring.application.name}
+            dataId: cloudalibaba-sentinel-service
             groupId: DEFAULT_GROUP
             data-type: json
             rule-type: flow
-  datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: org.gjt.mm.mysql.Driver
-    url: jdbc:mysql://localhost:3306/db2019?useUnicode=true&characterEncoding=utf-8&useSSL=false
-    username: qcb
-    password: 123456
-
-
-mybatis:
-  mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.qin.springcloud.entities #所有Entity别名所在包
-
 management:
   endpoints:
     web:
