@@ -17,7 +17,7 @@ spring:
       #采样率值介于0到1之间，1表示全部采集
       probability: 1
 mybatis:
-  mapper-locations: classpath:mapper/*.xml
+  mapper-locations: classpath*:mapper/*.xml
   type-aliases-package: com.qin.springcloud.entities #所有Entity别名所在包
 
 eureka:
