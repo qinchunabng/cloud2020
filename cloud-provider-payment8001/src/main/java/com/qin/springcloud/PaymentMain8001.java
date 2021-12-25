@@ -12,7 +12,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * @date 2021/11/12 16:35.
  */
 @EnableEurekaClient
-@SpringBootApplication
+@SpringBootApplication()
 @EnableDiscoveryClient
 public class PaymentMain8001 {
 
